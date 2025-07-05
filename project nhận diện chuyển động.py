@@ -6,7 +6,7 @@ for i in range(3):
     xx,flame=cap.read()
     flame=cv2.resize(flame,(640,480))
     gray = cv2.cvtColor(flame, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (25, 25), 0)
+    gray = cv2.GaussianBlur(gray, (9, 9), 0)
     last_flame=gray 
 while 1:
     xx,flame=cap.read()
@@ -21,9 +21,9 @@ while 1:
             continue
         x, y, w, h = cv2.boundingRect(contour)
         cv2.rectangle(flame, (x, y), (x+w, y+h), (0, 255, 0), 3)
-    cv2.imshow("Window", img_mask)
+    #cv2.imshow("Window", img_mask)
     cv2.imshow('window',flame)
 
 
-    if cv2.waitKey(10) & 0xff==27:   
+    if cv2.waitKey(25) & 0xff==27:   
         break 
